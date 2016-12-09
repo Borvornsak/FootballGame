@@ -1,7 +1,9 @@
 package logic;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+import sharedObject.RenderableHolder;
 import utility.InputUtility;
 
 public class Player extends Entity {
@@ -9,8 +11,7 @@ public class Player extends Entity {
 	private boolean selected = false;
 
 	public Player(double x, double y) {
-		this.x = x;
-		this.y = y;
+		super(x, y);
 	}
 
 	public boolean isHoldingBall() {
@@ -21,7 +22,11 @@ public class Player extends Entity {
 		return selected;
 	}
 
+	@Override
 	public void update() {
+		if(InputUtility.getKeyPressed(KeyCode.S)){
+			selected = true;
+		}
 		if (selected) {
 			if (InputUtility.isLeftClickTriggered()) {
 				this.x = InputUtility.mouseX;
@@ -33,8 +38,9 @@ public class Player extends Entity {
 	@Override
 	public void draw(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		gc.setFill(Color.BLUE);
-		gc.fillOval(x, y, 20, 20);
+		//gc.drawImage(RenderableHolder.player, x, y);
+		gc.setFill(Color.BLACK);
+		gc.fillOval(x, y, 40, 40);
 	}
 
 }

@@ -5,11 +5,17 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javafx.scene.image.Image;
+
 public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
 
 	private List<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
+	public static Image player;
+	public static Image ball;
+	public static Image arrow;
+	public static Image field;
 
 	static {
 		loadResource();
@@ -29,7 +35,11 @@ public class RenderableHolder {
 	}
 
 	public static void loadResource() {
-
+		ClassLoader loader = ClassLoader.getSystemClassLoader();
+//		player = new Image(loader.getResource("player.png").toString());
+//		ball = new Image(loader.getResource("ball.png").toString());
+//		arrow = new Image(ClassLoader.getSystemResource("arrow.png").toString());
+//		field = new Image(ClassLoader.getSystemResource("field.png").toString());
 	}
 
 	public void add(IRenderable entity) {

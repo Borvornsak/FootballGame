@@ -6,8 +6,11 @@ public abstract class Entity implements IRenderable {
 	protected double x, y;
 	protected int z;
 	protected boolean visible, destroyed;
-	
-	protected Entity(){
+
+	public Entity(double x, double y) {
+		this.x = x;
+		this.y = y;
+		z = 1;
 		visible = true;
 		destroyed = false;
 	}
@@ -26,5 +29,7 @@ public abstract class Entity implements IRenderable {
 	public boolean isVisible() {
 		return visible;
 	}
+	
+	public abstract void update();
 
 }
